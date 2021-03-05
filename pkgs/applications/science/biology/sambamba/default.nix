@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, python3, which, dmd, ldc, zlib }:
+{ lib, stdenv, fetchFromGitHub, python3, which, ldc, dcompiler ? ldc, zlib }:
 
 stdenv.mkDerivation rec {
   pname = "sambamba";
@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
     fetchSubmodules = true;
   };
 
-  nativeBuildInputs = [ which python3 dmd ldc ];
+  nativeBuildInputs = [ which python3 dcompiler ];
   buildInputs = [ zlib ];
 
   # Upstream's install target is broken; copy manually
