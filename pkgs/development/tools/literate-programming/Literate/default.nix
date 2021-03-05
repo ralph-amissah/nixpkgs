@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchgit, dmd, dub }:
+{ lib, stdenv, fetchgit, ldc, dcompiler ? ldc, dub }:
 
 stdenv.mkDerivation {
   pname = "Literate";
@@ -10,7 +10,7 @@ stdenv.mkDerivation {
     sha256 = "09h1as01z0fw0bj0kf1g9nlhvinya7sqq2x8qb6zmhvqqm6v4n49";
   };
 
-  buildInputs = [ dmd dub ];
+  buildInputs = [ dcompiler dub ];
 
   installPhase = "install -D bin/lit $out/bin/lit";
 
